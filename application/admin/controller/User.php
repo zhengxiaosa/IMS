@@ -10,26 +10,23 @@ class User extends Controller {
 
         return $this->fetch();
     }
-
     //登录验证
     public function checkLogin()
     {
         $status = 0; //验证失败标志
         $result = '验证失败'; //失败提示信息
         $data = request() -> param();
-
         //验证规则
-        $rule = [
-            'name|姓名' => 'require',
-            'password|密码'=>'require',
-            'captcha|验证码' => 'require|captcha'
-        ];
-
+//        $rule = [
+//            'name|姓名' => 'require',
+//            'password|密码'=>'require',
+//            'captcha|验证码' => 'require|captcha'
+//        ];
         //验证数据 $this->validate($data, $rule, $msg)
-        $result = $this -> validate($data, $rule);
-
-        //通过验证后,进行数据表查询
+//        $result = $this -> validate($data, $rule);
+//        //通过验证后,进行数据表查询
         //此处必须全等===才可以,因为验证不通过,$result保存错误信息字符串,返回非零
+        $result = $this->validate($data,'User.login');
         if (true === $result) {
 
             //查询条件
