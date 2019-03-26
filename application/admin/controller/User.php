@@ -79,4 +79,31 @@ class User extends Controller {
             }
         }
     }
+
+    public function edit(){
+        $id = input('id/d');
+        $data = UserModel::get($id);
+        $this->fetch('edit',['data'=>$data]);
+    }
+
+    public function update(){
+        $data =$this->request->param();
+        $validate_result = $this->validate($data,'User.add');
+        if($validate_result !== true){
+            $this->error('验证失败');
+        }else{
+            (new UserModel())->allowField(true)->isUpdate(true)->save($data);
+        }
+        $this->success('修改成功');
+    }
+
+    public function delete(){
+        $id = input('id/d');
+        try{
+            (new UserModel())->allowField(true)->allowField(true)->save(['id'=>$id,'status'=>0]);
+        }catch (\Exception $e){
+            $this->error($e->getMessage());
+        }
+       $this->success('删除成功');
+    }
 }
