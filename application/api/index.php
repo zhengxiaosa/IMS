@@ -18,7 +18,7 @@ class index
         //设置订单金额
         $input->SetTotal_fee('1');
         //设置异步通知地址
-        $input->SetNotify_url('http://www.php.wx/index.php/index/Notify/index');
+        $input->SetNotify_url('http://www.php.wx/index.html/index/Notify/index');
         //设置交易类型
         $input->SetTrade_type('NATIVE');
         //设置商品ID

@@ -14,6 +14,7 @@
 <link href="__STATIC__/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" type="text/css" />
 <link href="__STATIC__/static/h-ui.admin/css/style.css" rel="stylesheet" type="text/css" />
 <link href="__STATIC__/lib/Hui-iconfont/1.0.8/iconfont.css" rel="stylesheet" type="text/css" />
+  <link href="__STATIC__/layui/css/layui.css" rel="stylesheet" type="text/css"/>
 <!--[if IE 6]>
 <script type="text/javascript" src="__STATIC__/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
 <script>DD_belatedPNG.fix('*');</script>
@@ -65,26 +66,30 @@
 <div class="footer">Copyright 你的公司名称 by H-ui.admin v3.1</div>
 <script type="text/javascript" src="__STATIC__/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="__STATIC__/static/h-ui/js/H-ui.min.js"></script>
-<script type="text/javascript" src="__STATIC/layui/layui.all.js"></script>
+<script type="text/javascript" src="__STATIC__/layui/layui.all.js"></script>
 <script>
+  layui.use(['layer'],function () {
+      var layer = layui.layer;
     $(function(){
-        $('#login').on('click', function(){
-            $.ajax({
-                type: 'POST',
-                url: "{:url('/admin/user/checkLogin')}",
-                data: $('form').serialize(),
-                dataType: 'json',
-                success: function(data){
-                    if (data.status == 1) {
-                        alert(data.message);
-                        window.location.href="{:url('index/index')}";
-                    } else {
-                        alert(data.message);
-                    }
-                }
-            });
-        })
+      $('#login').on('click', function(){
+        $.ajax({
+          type: 'POST',
+          url: "{:url('/admin/user/checkLogin')}",
+          data: $('form').serialize(),
+          dataType: 'json',
+          success: function(data){
+            if (data.status == 1) {
+              layer.msg(data.message);
+              window.location.href="{:url('index/index')}";
+            } else {
+              layer.msg(data.message);
+            }
+          }
+        });
+      })
     })
+  });
+
 </script>
 
 <script>

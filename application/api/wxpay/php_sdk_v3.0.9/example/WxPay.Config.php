@@ -101,7 +101,7 @@ class WxPayConfig extends WxPayConfigInterface
 	/**
 	 * TODO：设置商户证书路径
 	 * 证书路径,注意应该填写绝对路径（仅退款、撤销订单时需要，可登录商户平台下载，
-	 * API证书下载地址：https://pay.weixin.qq.com/index.php/account/api_cert，下载之前需要安装商户操作证书）
+	 * API证书下载地址：https://pay.weixin.qq.com/index.html/account/api_cert，下载之前需要安装商户操作证书）
 	 * 注意:
 	 * 1.证书文件不能放在web服务器虚拟目录，应放在有访问权限控制的目录中，防止被他人下载；
 	 * 2.建议将证书文件名改为复杂且不容易猜测的文件名；
